@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140801175114) do
     t.integer  "bye_week"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "day_ranks"
   end
 
 end
