@@ -4,18 +4,22 @@ class Player < ActiveRecord::Base
   before_create :set_todays_day_rank_empty
 
   def overall_rank(date = Date.today)
-    day_ranks[date][:overall_rank]
+    ranks_for_day(date)[:overall_rank]
   end
 
   def nerd_rank(date = Date.today)
-    day_ranks[date][:nerd_rank]
+    ranks_for_day(date)[:nerd_rank]
   end
 
   def position_rank(date = Date.today)
-    day_ranks[date][:position_rank]
+    ranks_for_day(date)[:position_rank]
   end
 
   private
+
+  def ranks_for_day(date = Date.today)
+    day_ranks[date] || NullDayRanks.new
+  end
 
   def set_todays_day_rank_empty
     self.day_ranks ||= {Date.today => {}}
