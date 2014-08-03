@@ -1,11 +1,11 @@
 class NerdImporter
   def self.import
-    FFNerd.api_key = ENV["FANTASY_FOOTBALL_NERD_API_KEY"] || 'va7qvfxe44qu'
+    FFNerd.api_key = ENV["FANTASY_FOOTBALL_NERD_API_KEY"]
     import_all!
   end
 
   def self.import_all!
-    FFNerd.standard_draft_rankings[0,150].each do |ff_player|
+    FFNerd.standard_draft_rankings.each do |ff_player|
       player = Player.find_by(nerd_id: ff_player.playerId)
       if player.nil?
         player = Player.create(
