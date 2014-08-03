@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+# Create the backup on heroku
+heroku pgbackups:capture --expire --app fantasy_ranker
+
+# Download the backup
+curl -o /tmp/fantasy_ranker-production.dump `heroku pgbackups:url --app fantasy_ranker`
+
+# Restore the backup
+pg_restore --verbose --clean --no-acl --no-owner -h 127.0.0.1 -U `whoami` -d fantasy_ranker_development /tmp/fantasy_ranker-production.dump
+
+# Clean up
+rm -f /tmp/fantasy_ranker-production.dump
+
+set +e
