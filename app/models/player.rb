@@ -3,6 +3,12 @@ class Player < ActiveRecord::Base
   validates :nerd_id, uniqueness: true
   before_create :set_todays_day_rank_empty
 
+  scope :by_overall_rank, -> {
+    all.sort_by do |player|
+      player.overall_rank
+    end
+  }
+
   def overall_rank(date = Date.today)
     ranks_for_day(date)[:overall_rank]
   end
