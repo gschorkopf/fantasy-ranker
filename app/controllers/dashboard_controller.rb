@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def show
-    @players = Player.by_overall_rank
+    @players = PlayerDecorator.decorate_collection(Player.by_overall_rank)
   end
 end
