@@ -8,7 +8,7 @@ class Player < ActiveRecord::Base
       player.overall_rank
     end
     matches.select do |player|
-      player.overall_rank <= 200
+      player.overall_rank && player.overall_rank <= 200
     end
   }
 
