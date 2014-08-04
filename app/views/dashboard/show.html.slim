@@ -1,0 +1,9 @@
+h1 Players
+ol
+  - @players.each do |player|
+    li
+      ul style="list-style-type:none;"
+        li = [player.first_name, player.last_name].join(" ")
+        li = player.position
+        li = player.team
+        li = player.nerd_rank
