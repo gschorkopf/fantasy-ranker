@@ -4,11 +4,12 @@ class Player < ActiveRecord::Base
   before_create :set_todays_day_rank_empty
 
   scope :by_overall_rank, -> {
-    matches = all.sort_by do |player|
-      player.overall_rank
-    end
-    matches.select do |player|
+    matches = all.select do |player|
       player.overall_rank && player.overall_rank <= 200
+    end
+
+    matches.sort_by do |player|
+      player.overall_rank
     end
   }
 
