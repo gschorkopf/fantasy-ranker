@@ -1,9 +1,19 @@
-h1 Players
-ol
+.container
+  h1 Player Draft Rankings, Stats, and Trends
+
   - @players.each do |player|
-    li
-      ul style="list-style-type:none;"
-        li = [player.first_name, player.last_name].join(" ")
-        li = player.position
-        li = player.team
-        li = player.nerd_rank
+    .media
+      .media-body
+        h3.media-heading
+          span.badge = player.display_overall_rank
+          =< player.full_name
+
+        .row
+          .col-xs-6
+            h5 Stats
+            ul.list-unstyled
+              li = player.display_position_rank
+              li = player.team
+              li = player.display_nerd_rank
+
+          .col-xs-6
