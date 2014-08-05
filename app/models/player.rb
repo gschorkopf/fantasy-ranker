@@ -13,7 +13,6 @@ class Player < ActiveRecord::Base
     end
   }
 
-  def overall_rank(date = Date.today)
   def self.last_updated
     first.updated_at.to_date
   end
@@ -21,20 +20,22 @@ class Player < ActiveRecord::Base
   def self.previous_updated
     last_updated - 1.day
   end
+
+  def overall_rank(date = Player.last_updated)
     ranks_for_day(date)[:overall_rank]
   end
 
-  def nerd_rank(date = Date.today)
+  def nerd_rank(date = Player.last_updated)
     ranks_for_day(date)[:nerd_rank]
   end
 
-  def position_rank(date = Date.today)
+  def position_rank(date = Player.last_updated)
     ranks_for_day(date)[:position_rank]
   end
 
   private
 
-  def ranks_for_day(date = Date.today)
+  def ranks_for_day(date = Player.last_updated)
     day_ranks[date] || NullDayRanks.new
   end
 
