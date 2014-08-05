@@ -1,5 +1,6 @@
 .container
   h1 Player Draft Rankings, Stats, and Trends
+  small = "Last updated: #{Player.last_updated.to_formatted_s(:long)}"
 
   - @players.each do |player|
     .media

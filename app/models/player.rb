@@ -14,6 +14,13 @@ class Player < ActiveRecord::Base
   }
 
   def overall_rank(date = Date.today)
+  def self.last_updated
+    first.updated_at.to_date
+  end
+
+  def self.previous_updated
+    last_updated - 1.day
+  end
     ranks_for_day(date)[:overall_rank]
   end
 
