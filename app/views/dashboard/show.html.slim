@@ -4,6 +4,7 @@
 
   - @players.each do |player|
     .media
+      = image_tag player.avatar, class: 'pull-left media-object thumbnail'
       .media-body
         h3.media-heading
           span.badge = player.display_overall_rank

@@ -16,4 +16,8 @@ class PlayerDecorator < Draper::Decorator
   def display_nerd_rank
     "Aggregate Rank: #{nerd_rank}"
   end
+
+  def avatar
+    "http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/#{espn_id}.png&w=200&h=145"
+  end
 end
