@@ -33,6 +33,14 @@ class Player < ActiveRecord::Base
     ranks_for_day(date)[:position_rank]
   end
 
+  def compared_overall_rank_with_previous
+    overall_rank(Player.previous_updated) - overall_rank
+  end
+
+  def compared_nerd_rank_with_previous
+    nerd_rank(Player.previous_updated) - nerd_rank
+  end
+
   private
 
   def ranks_for_day(date = Player.last_updated)
