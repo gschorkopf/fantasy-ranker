@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'nokogiri'
 
 # View
 gem 'slim'
