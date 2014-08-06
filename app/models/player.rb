@@ -1,4 +1,13 @@
 class Player < ActiveRecord::Base
+  POSITIONS = %w(
+    QB
+    RB
+    WR
+    TE
+    DEF
+    K
+  ).freeze
+
   serialize :day_ranks
   validates :nerd_id, uniqueness: true
   before_create :set_todays_day_rank_empty
