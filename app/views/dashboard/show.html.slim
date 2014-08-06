@@ -9,6 +9,11 @@
         h3.media-heading
           span.badge = player.display_overall_rank
           =< player.full_name
+  ul.nav.nav-pills
+    li.active.togglers
+      = link_to t('stages.all'), "#", data: { toggle: 'pill', position: ".all" }
+    - @positions.each do |position|
+      = position_navigator(position)
 
         .row
           .col-xs-6
