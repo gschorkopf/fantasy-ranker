@@ -1,0 +1,26 @@
+.media.js-player class=("#{player.position}-position")
+  = image_tag player.avatar, class: 'pull-left media-object thumbnail'
+  .media-body
+    h3.media-heading
+      span.badge = player.display_overall_rank
+      =< player.full_name
+
+    .row
+      .col-xs-6
+        h5 Stats
+        ul.list-unstyled
+          li = player.display_position_rank
+          li = player.team
+          li = player.display_nerd_rank
+
+      .col-xs-6
+        h5 Trends
+        ul.list-unstyled
+          li
+            = "Overall Rank:"
+            =< player.overall_rank_icon
+            =< player.display_compared_overall_rank_with_previous
+          li
+            = "Aggregate Rank:"
+            =< player.nerd_rank_icon
+            =< player.display_compared_nerd_rank_with_previous
