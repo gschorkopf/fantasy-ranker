@@ -1,7 +1,9 @@
 .container
-  h1
-    = "Player Draft Rankings, Stats, and Trends"
-    small =< "Last updated: #{Player.last_updated.to_formatted_s(:long)}"
+  header
+    h1
+      = "Player Draft Rankings, Stats, and Trends"
+      small =< "Last updated: #{Player.last_updated.to_formatted_s(:long)}"
+    h3 Stats updated daily, at 3:00 EST
 
   ul.nav.nav-pills
     li.active.togglers
