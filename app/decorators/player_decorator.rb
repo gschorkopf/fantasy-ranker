@@ -18,7 +18,11 @@ class PlayerDecorator < Draper::Decorator
   end
 
   def avatar
-    "http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/#{espn_id}.png&w=200&h=145"
+    if position == 'DEF'
+      "http://a1.espncdn.com/prod/assets/clubhouses/2010/nfl/bg_elements/teamlogos/#{team.downcase}.png"
+    else
+      "http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/#{espn_id}.png&w=200&h=145"
+    end
   end
 
   def display_compared_overall_rank_with_previous
