@@ -7,7 +7,7 @@
 
   ul.nav.nav-pills
     li.active.togglers
-      = link_to t('stages.all'), "#", data: { toggle: 'pill', position: ".all" }
+      = link_to "All", "#", data: { toggle: 'pill', position: ".all" }
     - @positions.each do |position|
       = position_navigator(position)
 
