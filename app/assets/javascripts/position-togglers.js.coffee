@@ -1,5 +1,6 @@
 schedule = ->
   $pills = $('.togglers')
+  $closers = $('.js-close-media')
   $players = $('.js-player')
   allPlayers = '.all'
 
@@ -13,6 +14,10 @@ schedule = ->
       $toHide = $players.not(target)
       $toShow.removeClass('hidden')
       $toHide.addClass('hidden')
+
+  $closers.on 'click', ->
+    $target = $(this).closest('.js-player')
+    $target.addClass('permanent-hidden')
 
 $(document).ready schedule
 $(document).on "page:load", schedule
