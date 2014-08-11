@@ -7,6 +7,7 @@ class Player < ActiveRecord::Base
     DEF
     K
   ).freeze
+  PLAYER_COUNT_TO_SHOW = 200
 
   serialize :day_ranks
   validates :nerd_id, uniqueness: true
@@ -14,7 +15,7 @@ class Player < ActiveRecord::Base
 
   scope :by_overall_rank, -> {
     matches = all.select do |player|
-      player.overall_rank && player.overall_rank <= 200
+      player.overall_rank && player.overall_rank <= PLAYER_COUNT_TO_SHOW
     end
 
     matches.sort_by do |player|

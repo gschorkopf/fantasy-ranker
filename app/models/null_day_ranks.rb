@@ -1,5 +1,5 @@
 class NullDayRanks
   def [](args)
-    nil
+    Player::PLAYER_COUNT_TO_SHOW + 1
   end
 end
