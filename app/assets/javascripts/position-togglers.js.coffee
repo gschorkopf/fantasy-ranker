@@ -2,6 +2,7 @@ schedule = ->
   $pills = $('.togglers')
   $closers = $('.js-close-media')
   $players = $('.js-player')
+  $draftCount = $('.js-draft-count')
   allPlayers = '.all'
 
   $pills.on 'click', ->
@@ -18,6 +19,9 @@ schedule = ->
   $closers.on 'click', ->
     $target = $(this).closest('.js-player')
     $target.addClass('permanent-hidden')
+    currentDraftCount = parseInt($draftCount.text())
+    $draftCount.text(currentDraftCount + 1)
+
 
 $(document).ready schedule
 $(document).on "page:load", schedule
