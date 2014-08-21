@@ -33,11 +33,27 @@ class PlayerDecorator < Draper::Decorator
     end
   end
 
+  def display_compared_overall_rank_with_last_week
+    if compared_overall_rank_with_last_week.zero?
+      "No change"
+    else
+      compared_overall_rank_with_last_week.abs
+    end
+  end
+
   def display_compared_nerd_rank_with_previous
     if compared_nerd_rank_with_previous.zero?
       "No change"
     else
       h.number_with_precision(compared_nerd_rank_with_previous.abs, precision: 3)
+    end
+  end
+
+  def display_compared_nerd_rank_with_last_week
+    if compared_nerd_rank_with_last_week.zero?
+      "No change"
+    else
+      h.number_with_precision(compared_nerd_rank_with_last_week.abs, precision: 3)
     end
   end
 
@@ -53,6 +69,22 @@ class PlayerDecorator < Draper::Decorator
     if compared_nerd_rank_with_previous > 0
       badge_icon(icon_type: 'arrow-up', badge_color: 'green')
     elsif compared_nerd_rank_with_previous < 0
+      badge_icon(icon_type: 'arrow-down', badge_color: 'red')
+    end
+  end
+
+  def overall_rank_icon_for_week
+    if compared_overall_rank_with_last_week > 0
+      badge_icon(icon_type: 'arrow-up', badge_color: 'green')
+    elsif compared_overall_rank_with_last_week < 0
+      badge_icon(icon_type: 'arrow-down', badge_color: 'red')
+    end
+  end
+
+  def nerd_rank_icon_for_week
+    if compared_nerd_rank_with_last_week > 0
+      badge_icon(icon_type: 'arrow-up', badge_color: 'green')
+    elsif compared_nerd_rank_with_last_week < 0
       badge_icon(icon_type: 'arrow-down', badge_color: 'red')
     end
   end

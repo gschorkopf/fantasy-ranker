@@ -31,6 +31,10 @@ class Player < ActiveRecord::Base
     last_updated - 1.day
   end
 
+  def self.previous_week
+    last_updated - 1.week
+  end
+
   def overall_rank(date = Player.last_updated)
     ranks_for_day(date)[:overall_rank]
   end
@@ -49,6 +53,14 @@ class Player < ActiveRecord::Base
 
   def compared_nerd_rank_with_previous
     nerd_rank(Player.previous_updated) - nerd_rank
+  end
+
+  def compared_overall_rank_with_last_week
+    overall_rank(Player.previous_week) - overall_rank
+  end
+
+  def compared_nerd_rank_with_last_week
+    nerd_rank(Player.previous_week) - nerd_rank
   end
 
   private
