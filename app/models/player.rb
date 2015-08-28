@@ -24,7 +24,7 @@ class Player < ActiveRecord::Base
   }
 
   def self.last_updated
-    "Sept 4 2014".to_date # Day of our draft
+    first.updated_at.to_date
   end
 
   def self.previous_updated
