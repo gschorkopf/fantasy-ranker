@@ -16,6 +16,11 @@ class NerdImporter
           team: ff_player.team,
           bye_week: ff_player.byeWeek
         )
+      else
+        player.update(
+          team: ff_player.team,
+          bye_week: ff_player.byeWeek
+        )
       end
 
       player.day_ranks[Date.today] = {
